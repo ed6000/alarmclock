@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Alarm Clock</title>
+	<style type="text/css">
+		#time{
+			text-align: center;
+			color: black
+		}
+		#alarm{
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+
+<div id="time"></div>
+
+<div id="alarm">
+	<input type="text" name="Hour" id="aHour" placeholder="Hour">
+	<input type="text" name="Minutes" id="aMinute" placeholder="Minutes">
+	<input type="button" name="Set Alarm" onclick="alarm()">
+</div>
+<script type="text/javascript">
+	function time()
+	{
+		var d = new Date();
+		var h = d.getHours();
+		var m = d.getMinutes();
+		var s = d.getSeconds();
+	
+	var ntime = h+":"+m+":"+s;
+	document.getElementById("time").innerHTML = ntime; //display time
+	}
+	time();
+	setInterval(time, 1000);
+
+	//////////////////////////////
+	//Alarm
+	/////////////////////////////
+	function alarm(){
+		var d = new Date();
+		var h = d.getHours();
+		var m = d.getMinutes();
+		var alarmMin = document.getElementById('aMinute').value;
+		var alarmHr = document.getElementById('aHour').value;
+	
+
+	var sound = new Audio("yeeeeeeeah.mp3");
+		sound.loop = true;
+
+	if (alarmHr == h && alarmMin == m) {
+		sound.play();
+	}}
+	setInterval(alarm, 1000);
+</script>
+</body>
+</html>
